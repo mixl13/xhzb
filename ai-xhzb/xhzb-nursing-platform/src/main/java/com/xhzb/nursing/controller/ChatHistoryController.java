@@ -24,7 +24,7 @@ public class ChatHistoryController extends BaseController {
      * 获取当前登录用户在 Redis 中所有会话ID
      * 前端：GET /ai/history/list
      */
-    @GetMapping("/list")
+    @GetMapping
     public AjaxResult getChatIdList(){
         List<String> chatIdList = chatHistoryService.findChatIdList(SecurityUtils.getUserId().toString());
         return AjaxResult.success(chatIdList);

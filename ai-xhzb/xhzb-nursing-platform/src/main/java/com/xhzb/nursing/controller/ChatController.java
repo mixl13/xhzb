@@ -38,7 +38,6 @@ public class ChatController {
                 .advisors(a->a.param(ChatMemory.CONVERSATION_ID,chatId))
                 .stream()
                 .content();
-
         return content;
     }
 }
