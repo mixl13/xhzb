@@ -3,7 +3,7 @@ package com.xhzb.nursing.mapper;
 import java.util.List;
 import com.xhzb.nursing.domain.NursingProject;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.xhzb.nursing.domain.vo.NursingProjectVo;
+import com.xhzb.nursing.domain.vo.NursingProjectVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -65,5 +65,5 @@ public interface NursingProjectMapper extends BaseMapper<NursingProject>
     public int deleteNursingProjectByIds(Long[] ids);
 
     @Select("select id value,name label from nursing_project where status = 1")
-    List<NursingProjectVo> listAll();
+    List<NursingProjectVO> listAll();
 }

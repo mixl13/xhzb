@@ -4,9 +4,8 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.xhzb.common.exception.ServiceException;
-import com.xhzb.common.exception.base.BaseException;
 import com.xhzb.nursing.domain.NursingProjectPlan;
-import com.xhzb.nursing.domain.vo.NursingProjectVo;
+import com.xhzb.nursing.domain.vo.NursingProjectVO;
 import com.xhzb.nursing.mapper.NursingProjectPlanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -125,7 +124,20 @@ public class NursingProjectServiceImpl extends ServiceImpl<NursingProjectMapper,
      * @return
      */
     @Override
-    public List<NursingProjectVo> listAll() {
+    public List<NursingProjectVO> listAll() {
         return nursingProjectMapper.listAll();
+    }
+
+    @Override
+    public List<NursingProjectVO> selectNursingProjectOptions() {
+        // 不设置任何查询条件，查询全部护理项目
+        List<NursingProject> list = nursingProjectMapper.selectNursingProjectList(new NursingProject());
+        List<NursingProjectVO> options = new java.util.ArrayList<>();
+        for (NursingProject project : list)
+        {
+            // label 展示名称，value 传递项目ID（字符串形式，与前端约定一致）
+            options.add(new NursingProjectVO(project.getName(), String.valueOf(project.getId())));
+        }
+        return options;
     }
 }

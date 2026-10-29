@@ -3,7 +3,7 @@ package com.xhzb.nursing.service;
 import java.util.List;
 import com.xhzb.nursing.domain.NursingProject;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xhzb.nursing.domain.vo.NursingProjectVo;
+import com.xhzb.nursing.domain.vo.NursingProjectVO;
 
 /**
  * 护理项目Service接口
@@ -65,5 +65,7 @@ public interface INursingProjectService extends IService<NursingProject>
      * 查询所有的护理项目
      * @return
      */
-    List<NursingProjectVo> listAll();
+    List<NursingProjectVO> listAll();
+
+    List<NursingProjectVO> selectNursingProjectOptions();
 }
