@@ -1,15 +1,11 @@
 package com.xhzb.nursing.service.impl;
 
-import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xhzb.common.constant.CacheConstants;
-import com.xhzb.common.utils.StringUtils;
-import com.xhzb.nursing.domain.Room;
+import com.xhzb.nursing.domain.entity.Room;
 import com.xhzb.nursing.mapper.RoomMapper;
 import com.xhzb.nursing.service.IRoomService;
 import com.xhzb.nursing.domain.vo.RoomVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;

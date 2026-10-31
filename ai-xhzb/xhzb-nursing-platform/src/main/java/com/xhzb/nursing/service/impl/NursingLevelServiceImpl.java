@@ -1,7 +1,7 @@
 package com.xhzb.nursing.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xhzb.nursing.domain.NursingLevel;
+import com.xhzb.nursing.domain.entity.NursingLevel;
 import com.xhzb.nursing.domain.vo.NursingLevelVo;
 import com.xhzb.nursing.mapper.NursingLevelMapper;
 import com.xhzb.nursing.service.INursingLevelService;

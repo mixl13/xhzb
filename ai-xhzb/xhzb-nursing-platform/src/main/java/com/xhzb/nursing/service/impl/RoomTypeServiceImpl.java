@@ -4,7 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xhzb.common.exception.base.BaseException;
-import com.xhzb.nursing.domain.RoomType;
+import com.xhzb.nursing.domain.entity.RoomType;
 import com.xhzb.nursing.mapper.RoomTypeMapper;
 import com.xhzb.nursing.service.IRoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;

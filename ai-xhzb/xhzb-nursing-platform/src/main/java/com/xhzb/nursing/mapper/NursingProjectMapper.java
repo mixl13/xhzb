@@ -1,7 +1,7 @@
 package com.xhzb.nursing.mapper;
 
 import java.util.List;
-import com.xhzb.nursing.domain.NursingProject;
+import com.xhzb.nursing.domain.entity.NursingProject;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.xhzb.nursing.domain.vo.NursingProjectVO;
 import org.apache.ibatis.annotations.Mapper;

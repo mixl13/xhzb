@@ -1,4 +1,4 @@
-package com.xhzb.nursing.domain;
+package com.xhzb.nursing.domain.entity;
 
 import java.math.BigDecimal;
 import org.apache.commons.lang3.builder.ToStringBuilder;

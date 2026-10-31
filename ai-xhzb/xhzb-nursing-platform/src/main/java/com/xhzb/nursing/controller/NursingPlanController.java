@@ -18,7 +18,7 @@ import com.xhzb.common.annotation.Log;
 import com.xhzb.common.core.controller.BaseController;
 import com.xhzb.common.core.domain.AjaxResult;
 import com.xhzb.common.enums.BusinessType;
-import com.xhzb.nursing.domain.NursingPlan;
+import com.xhzb.nursing.domain.entity.NursingPlan;
 import com.xhzb.nursing.service.INursingPlanService;
 import com.xhzb.common.utils.poi.ExcelUtil;
 import com.xhzb.common.core.page.TableDataInfo;

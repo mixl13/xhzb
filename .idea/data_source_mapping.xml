@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/722c87fa-c746-4238-91a3-b0399b05af92/console.sql" value="722c87fa-c746-4238-91a3-b0399b05af92" />
     <file url="file://$PROJECT_DIR$/ai-xhzb/xhzb-nursing-platform/src/main/java/com/xhzb/nursing/mapper/NursingProjectMapper.java" value="722c87fa-c746-4238-91a3-b0399b05af92" />
+    <file url="file://$PROJECT_DIR$/ai-xhzb/xhzb-nursing-platform/src/main/resources/mapper/nursing/BedMapper.xml" value="722c87fa-c746-4238-91a3-b0399b05af92" />
+    <file url="file://$PROJECT_DIR$/ai-xhzb/xhzb-nursing-platform/src/main/resources/mapper/nursing/KnowledgeBaseMapper.xml" value="722c87fa-c746-4238-91a3-b0399b05af92" />
   </component>
 </project>

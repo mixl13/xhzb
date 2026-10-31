@@ -1,7 +1,7 @@
 package com.xhzb.nursing.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.xhzb.nursing.domain.Bed;
+import com.xhzb.nursing.domain.entity.Bed;
 import com.xhzb.nursing.mapper.BedMapper;
 import com.xhzb.nursing.service.IBedService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,6 @@
-package com.xhzb.nursing.domain;
+package com.xhzb.nursing.domain.entity;
 
 import lombok.Data;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import com.xhzb.common.annotation.Excel;
 import com.xhzb.common.core.domain.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;

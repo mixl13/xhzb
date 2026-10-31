@@ -84,4 +84,10 @@ public class OSSAliyunFileStorageService {
 
     }
 
+    public InputStream download(String pathUrl) {
+        String prefix = "https://"+aliOssConfigProperties.getBucketName()+"."+ aliOssConfigProperties.getEndpoint()+"/";
+        String key = pathUrl.replace(prefix, "");
+        return ossClient.getObject(aliOssConfigProperties.getBucketName(), key).getObjectContent();
+    }
+
 }

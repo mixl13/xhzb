@@ -1,4 +1,4 @@
-package com.xhzb.nursing.memory;
+package com.xhzb.nursing.service;
 
 import com.xhzb.nursing.domain.vo.MessageVO;
 

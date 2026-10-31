@@ -1,4 +1,4 @@
-package com.xhzb.nursing.test;
+package com.xhzb;
 
 import cn.hutool.crypto.digest.BCrypt;
 

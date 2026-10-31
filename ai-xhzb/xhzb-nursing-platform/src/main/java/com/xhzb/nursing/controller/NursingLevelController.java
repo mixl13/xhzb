@@ -17,7 +17,7 @@ import com.xhzb.common.annotation.Log;
 import com.xhzb.common.core.controller.BaseController;
 import com.xhzb.common.core.domain.AjaxResult;
 import com.xhzb.common.enums.BusinessType;
-import com.xhzb.nursing.domain.NursingLevel;
+import com.xhzb.nursing.domain.entity.NursingLevel;
 import com.xhzb.nursing.service.INursingLevelService;
 import com.xhzb.common.core.page.TableDataInfo;
 import io.swagger.v3.oas.annotations.Operation;

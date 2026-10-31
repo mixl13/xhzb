@@ -20,7 +20,7 @@ import com.xhzb.common.annotation.Log;
 import com.xhzb.common.core.controller.BaseController;
 import com.xhzb.common.core.domain.AjaxResult;
 import com.xhzb.common.enums.BusinessType;
-import com.xhzb.nursing.domain.NursingProject;
+import com.xhzb.nursing.domain.entity.NursingProject;
 import com.xhzb.nursing.service.INursingProjectService;
 import com.xhzb.common.utils.poi.ExcelUtil;
 import com.xhzb.common.core.page.TableDataInfo;

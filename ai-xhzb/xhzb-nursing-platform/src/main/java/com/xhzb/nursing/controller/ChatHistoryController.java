@@ -1,6 +1,6 @@
 package com.xhzb.nursing.controller;
 
-import com.xhzb.nursing.memory.ChatHistoryService;
+import com.xhzb.nursing.service.ChatHistoryService;
 import com.xhzb.nursing.domain.vo.MessageVO;
 import com.xhzb.common.core.controller.BaseController;
 import com.xhzb.common.core.domain.AjaxResult;
@@ -50,4 +50,5 @@ public class ChatHistoryController extends BaseController {
         chatHistoryService.deleteChatHistory(chatId, SecurityUtils.getUserId().toString());
         return success();
     }
+
 }

@@ -12,14 +12,12 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 @Component
 public class RedisChatMemory implements ChatMemory {
-
     @Autowired
     private StringRedisTemplate redisTemplate;
     private static final String KEY_TEMPLATE = "chat:memory:%s";
 
-
     @Override
-    public void add(String conversationId,  List<Message> messages) {
+    public void add(String conversationId, List<Message> messages) {
         if (CollUtil.isEmpty(messages)) {
             return;
         }

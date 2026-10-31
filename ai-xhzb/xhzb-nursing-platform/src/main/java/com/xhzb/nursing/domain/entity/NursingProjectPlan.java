@@ -1,4 +1,4 @@
-package com.xhzb.nursing.domain;
+package com.xhzb.nursing.domain.entity;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;

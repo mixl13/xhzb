@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where id = #{id}
     </select>
 
-    <select id="selectAllByNur" resultType="com.xhzb.nursing.domain.Floor">
+    <select id="selectAllByNur" resultType="com.xhzb.nursing.domain.entity.Floor">
         select f.*
         from floor f
                  left join room r on r.floor_id = f.id

@@ -1,8 +1,7 @@
 package com.xhzb.nursing.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xhzb.nursing.domain.Floor;
-import com.xhzb.nursing.domain.vo.FloorVo;
+import com.xhzb.nursing.domain.entity.Floor;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.xhzb.nursing.domain.vo;
 
-import com.xhzb.nursing.domain.NursingLevel;
+import com.xhzb.nursing.domain.entity.NursingLevel;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

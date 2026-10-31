@@ -6,7 +6,7 @@ import com.xhzb.common.core.domain.AjaxResult;
 import com.xhzb.common.core.domain.R;
 import com.xhzb.common.core.page.TableDataInfo;
 import com.xhzb.common.enums.BusinessType;
-import com.xhzb.nursing.domain.Bed;
+import com.xhzb.nursing.domain.entity.Bed;
 import com.xhzb.nursing.service.IBedService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;

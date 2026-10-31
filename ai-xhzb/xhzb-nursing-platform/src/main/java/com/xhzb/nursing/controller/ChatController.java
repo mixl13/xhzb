@@ -2,12 +2,13 @@ package com.xhzb.nursing.controller;
 
 
 import cn.hutool.core.util.StrUtil;
-import com.xhzb.nursing.memory.ChatHistoryService;
+import com.xhzb.nursing.service.ChatHistoryService;
 import com.xhzb.common.exception.base.BaseException;
 import com.xhzb.common.utils.SecurityUtils;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
@@ -16,8 +17,10 @@ import reactor.core.publisher.Flux;
 @RequestMapping("/ai")
 public class ChatController {
 
+    //容器中存在两个 ChatClient（通用对话 / 健康评估），必须按 Bean 名称指定，否则按类型注入会歧义
     @Autowired
-    private ChatClient chatClient;
+    @Qualifier("deepSeekChatClient")
+    private ChatClient deepSeekChatClient;
 
     @Autowired
     private ChatHistoryService chatHistoryService;
@@ -32,7 +35,7 @@ public class ChatController {
         // Redis Set 天然去重，重复登记不会产生副作用
         chatHistoryService.savaHistory(SecurityUtils.getUserId().toString(), chatId);
 
-        Flux<String> content = chatClient
+        Flux<String> content = deepSeekChatClient
                 .prompt()
                 .user(prompt)
                 .advisors(a->a.param(ChatMemory.CONVERSATION_ID,chatId))

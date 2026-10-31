@@ -4,13 +4,13 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.xhzb.common.exception.ServiceException;
-import com.xhzb.nursing.domain.NursingProjectPlan;
+import com.xhzb.nursing.domain.entity.NursingProjectPlan;
 import com.xhzb.nursing.domain.vo.NursingProjectVO;
 import com.xhzb.nursing.mapper.NursingProjectPlanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.xhzb.nursing.mapper.NursingProjectMapper;
-import com.xhzb.nursing.domain.NursingProject;
+import com.xhzb.nursing.domain.entity.NursingProject;
 import com.xhzb.nursing.service.INursingProjectService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import java.util.Arrays;

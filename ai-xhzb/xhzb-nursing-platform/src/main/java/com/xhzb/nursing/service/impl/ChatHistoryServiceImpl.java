@@ -1,7 +1,7 @@
 package com.xhzb.nursing.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
-import com.xhzb.nursing.memory.ChatHistoryService;
+import com.xhzb.nursing.service.ChatHistoryService;
 import com.xhzb.nursing.domain.vo.MessageVO;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.messages.Message;

@@ -1,4 +1,4 @@
-package com.xhzb.nursing.domain;
+package com.xhzb.nursing.domain.entity;
 
 import com.xhzb.common.annotation.Excel;
 import com.xhzb.common.core.domain.BaseEntity;

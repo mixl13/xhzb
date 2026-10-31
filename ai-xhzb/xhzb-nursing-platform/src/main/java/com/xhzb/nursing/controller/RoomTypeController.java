@@ -6,7 +6,7 @@ import com.xhzb.common.core.domain.AjaxResult;
 import com.xhzb.common.core.page.TableDataInfo;
 import com.xhzb.common.enums.BusinessType;
 import com.xhzb.common.utils.poi.ExcelUtil;
-import com.xhzb.nursing.domain.RoomType;
+import com.xhzb.nursing.domain.entity.RoomType;
 import com.xhzb.nursing.service.IRoomTypeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -3,7 +3,7 @@ package com.xhzb.nursing.service;
 import java.util.List;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xhzb.nursing.domain.NursingLevel;
+import com.xhzb.nursing.domain.entity.NursingLevel;
 import com.xhzb.nursing.domain.vo.NursingLevelVo;
 
 /**
