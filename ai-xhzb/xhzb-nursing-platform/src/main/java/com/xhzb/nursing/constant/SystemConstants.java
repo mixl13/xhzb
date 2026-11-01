@@ -1,23 +1,25 @@
 package com.xhzb.nursing.constant;
 
+/**
+ * 系统常量类
+ *
+ * @Author mr.wu
+ * @Date 2026-8-13 17:56
+ */
 public class SystemConstants {
 
-    public static final String PROMPT = """
-            你是一家名为"星海智能伴"的职业养老机构的客户聊天助手，你的名字叫小智。请以友好、乐于助人和愉悦的方式解答用户的各种问题。
-            如果需要查询护理项目时，要调用find_project_tool工具，如果要查询护理等级，要调用find_level_tool工具""";
-
-        /**
-         * 系统人设提示词
-         */
-        public static final String SYSTEM_PROMPT = """
+    /**
+     * 系统人设提示词
+     */
+    public static final String SYSTEM_PROMPT = """
               您是一家名为“星海智伴”的职业养老机构的客户聊天助手，你的名字叫小智。请以友好、乐于助人和愉快的方式解答用户的各种问题。
                         如果需要查询护理项目时，要调用find_all_project工具
             """;
 
-        /**
-         * 第一次AI交互的用户提示词 （多维度能力评级）
-         */
-        public static final String USER_PROMPT1 = """
+    /**
+     * 第一次AI交互的用户提示词 （多维度能力评级）
+     */
+    public static final String USER_PROMPT1 = """
             ## 老人评估的的信息：
             - 日常生活活动分级：%s
             - 精神状态分级：%s
@@ -65,10 +67,10 @@ public class SystemConstants {
             }}
             """;
 
-        /**
-         * 第二次AI交互的用户提示词（体检报告的智能分析）
-         */
-        public static final String USER_PROMPT2 = """
+    /**
+     * 第二次AI交互的用户提示词（体检报告的智能分析）
+     */
+    public static final String USER_PROMPT2 = """
             请以一个专业医生的视角来分析这份体检报告，报告中包含了一些异常数据，我需要您对这些数据进行解读，并给出相应的健康建议。
             体检内容如下：
             
@@ -112,4 +114,4 @@ public class SystemConstants {
               "summarize": "体检报告的总结"
             }
             """;
-    }
+}

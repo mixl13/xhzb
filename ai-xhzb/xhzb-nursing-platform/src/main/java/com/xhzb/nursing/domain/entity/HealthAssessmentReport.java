@@ -1,5 +1,6 @@
 package com.xhzb.nursing.domain.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.xhzb.common.annotation.Excel;
@@ -32,7 +33,7 @@ public class HealthAssessmentReport extends BaseEntity
     @Schema(title = "评估时间")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Excel(name = "评估时间", width = 30, dateFormat = "yyyy-MM-dd")
-    private Date assessmentTime;
+    private LocalDateTime assessmentTime;
 
     /** 评估员姓名 */
     @Schema(title = "评估员姓名")

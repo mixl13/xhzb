@@ -94,4 +94,15 @@ public class NursingLevelServiceImpl extends ServiceImpl<NursingLevelMapper,Nurs
         return nursingLevelMapper.deleteNursingLevelById(id);
     }
 
+    /**
+     * 查询所有启用的护理等级信息
+     *
+     * @return 启用的护理等级集合
+     */
+    @Override
+    public List<NursingLevel> listAll()
+    {
+        // 入住办理只可选启用状态的护理等级
+        return this.lambdaQuery().eq(NursingLevel::getStatus, 1).list();
+    }
 }

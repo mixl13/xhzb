@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+// 说明：/ai/history 已交由 MySQL 版实现（MysqlChatController）对外提供，
+//       原 Redis 版整体迁移到 /ai/redis/history，逻辑不变，仅调整映射地址
 @RestController
-@RequestMapping("ai/history")
+@RequestMapping("ai/redis/history")
 public class ChatHistoryController extends BaseController {
     @Autowired
     private ChatHistoryService chatHistoryService;

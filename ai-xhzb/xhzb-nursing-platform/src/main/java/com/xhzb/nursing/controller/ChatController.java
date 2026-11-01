@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
+// 说明：/ai/chat 已交由 MySQL 版实现（MysqlChatController）对外提供，
+//       原 Redis 版整体迁移到 /ai/redis/chat，逻辑不变，仅调整映射地址
 @RestController
-@RequestMapping("/ai")
+@RequestMapping("/ai/redis")
 public class ChatController {
 
     //容器中存在两个 ChatClient（通用对话 / 健康评估），必须按 Bean 名称指定，否则按类型注入会歧义
@@ -25,7 +27,7 @@ public class ChatController {
     @Autowired
     private ChatHistoryService chatHistoryService;
 
-    @RequestMapping(value = "/chat", produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "zhushi/chat", produces = "text/html;charset=UTF-8")
     public Flux<String> chat(String prompt, String chatId) {
 
         if(StrUtil.isBlank(chatId) || "null".equals(chatId.trim())) {

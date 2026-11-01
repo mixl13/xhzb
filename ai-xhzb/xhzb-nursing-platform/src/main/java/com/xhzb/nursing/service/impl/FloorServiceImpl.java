@@ -2,6 +2,7 @@ package com.xhzb.nursing.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xhzb.nursing.domain.entity.Floor;
+import com.xhzb.nursing.domain.vo.FloorTreeVo;
 import com.xhzb.nursing.mapper.FloorMapper;
 import com.xhzb.nursing.service.IFloorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,5 +91,16 @@ public class FloorServiceImpl extends ServiceImpl<FloorMapper, Floor> implements
     @Override
     public List<Floor> selectAllByNur() {
         return floorMapper.selectAllByNur();
+    }
+
+    /**
+     * 根据床位状态查询楼层-房间-床位三级树形数据
+     *
+     * @param status 床位状态，0：未入住，1：已入住
+     * @return 楼层树形集合
+     */
+    @Override
+    public List<FloorTreeVo> getRoomAndBedByBedStatus(Integer status) {
+        return floorMapper.selectRoomAndBedByBedStatus(status);
     }
 }

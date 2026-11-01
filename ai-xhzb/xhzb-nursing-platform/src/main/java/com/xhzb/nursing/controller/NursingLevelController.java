@@ -39,9 +39,9 @@ public class NursingLevelController extends BaseController
     private INursingLevelService nursingLevelService;
 
     /**
-     * 查询护理等级列表
+     * 查询护理等级列表（分页）
      */
-    @PreAuthorize("@ss.hasPermi('nursing:nursingLevel:list')")
+    @PreAuthorize("@ss.hasAnyPermi('nursing:nursingLevel:list,nursing:nursingLevel:listAll')")
     @GetMapping("/list")
     @Operation(summary = "查询护理等级列表")
     public TableDataInfo list(NursingLevel nursingLevel)
@@ -49,6 +49,16 @@ public class NursingLevelController extends BaseController
         startPage();
         List<NursingLevelVo> list = nursingLevelService.selectNursingLevelList(nursingLevel);
         return getDataTable(list);
+    }
+
+    /**
+     * 查询所有护理等级信息（只查启用状态）
+     */
+    @GetMapping("/listAll")
+    @Operation(summary = "查询所有护理等级信息")
+    public AjaxResult listAll()
+    {
+        return success(nursingLevelService.listAll());
     }
 
     /**
@@ -91,7 +101,7 @@ public class NursingLevelController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('nursing:nursingLevel:remove')")
     @Log(title = "护理等级", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{ids}")
+    @DeleteMapping("/{ids}")
     @Operation(summary = "删除护理等级")
     public AjaxResult remove(@Schema(name = "护理等级ID", requiredMode = Schema.RequiredMode.REQUIRED) @PathVariable Long[] ids)
     {

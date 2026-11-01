@@ -44,7 +44,7 @@ public class SpringAIConfig {
                                          ChatMemory chatMemory, NursingLevelTool nursingLevelTool,VectorStore vectorStore) {
         return ChatClient
                 .builder(deepSeekChatModel)
-                .defaultSystem(SystemConstants.PROMPT)
+                .defaultSystem(SystemConstants.SYSTEM_PROMPT)
                 .defaultTools(nursingProjectTool,nursingLevelTool)
                 .defaultAdvisors(new SimpleLoggerAdvisor(), MessageChatMemoryAdvisor.builder(chatMemory).build(),
                         QuestionAnswerAdvisor.builder(vectorStore).searchRequest(SearchRequest.builder()
@@ -60,6 +60,18 @@ public class SpringAIConfig {
                 .indexName(indexName)
                 .prefix(prefix)
                 .initializeSchema(true)
+                .build();
+    }
+
+    /**
+     * 构建AI健康评估的对话实例 - chatClientDeepseekHealth
+     * @param deepSeekChatModel
+     * @return
+     */
+    @Bean
+    public ChatClient chatClientDeepseekHealth(DeepSeekChatModel deepSeekChatModel) {
+        return ChatClient.builder(deepSeekChatModel)
+                .defaultSystem("你是一个健康评估专家，专门用来评估老人的健康情况")
                 .build();
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-@Component
+
 public class RedisChatMemory implements ChatMemory {
     @Autowired
     private StringRedisTemplate redisTemplate;

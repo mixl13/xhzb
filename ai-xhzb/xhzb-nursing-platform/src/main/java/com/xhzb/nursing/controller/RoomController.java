@@ -47,6 +47,16 @@ public class RoomController extends BaseController
         return R.ok(list);
     }
     /**
+     * 查询房间数据(楼层、房间、价格)
+     */
+    @GetMapping("/one/{id}")
+    @Operation(summary = "查询房间数据(楼层、房间、价格)")
+    public AjaxResult getRoomOne(@Schema(name = "房间ID", requiredMode = Schema.RequiredMode.REQUIRED) @PathVariable("id") Long id)
+    {
+        return AjaxResult.success(roomService.getRoomById(id));
+    }
+
+    /**
      * 查询房间列表
      */
     @PreAuthorize("@ss.hasPermi('elder:room:list')")

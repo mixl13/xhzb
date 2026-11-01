@@ -43,6 +43,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         order by code, create_time desc
     </select>
 
+    <!-- 楼层-房间-床位三级树形结果映射：外层为楼层，二级为房间，三级为床位 -->
+    <resultMap id="floorTreeResultMap" type="com.xhzb.nursing.domain.vo.FloorTreeVo">
+        <id column="fid" property="value"/>
+        <result column="fname" property="label"/>
+        <collection property="children" ofType="com.xhzb.nursing.domain.vo.FloorTreeVo">
+            <id column="rid" property="value"/>
+            <result column="rcode" property="label"/>
+            <collection property="children" ofType="com.xhzb.nursing.domain.vo.FloorTreeVo">
+                <id column="bid" property="value"/>
+                <result column="bed_number" property="label"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="selectRoomAndBedByBedStatus" parameterType="Integer" resultMap="floorTreeResultMap">
+        select f.id as fid,
+               f.name as fname,
+               r.id as rid,
+               r.code as rcode,
+               b.id as bid,
+               b.bed_number
+        from floor f
+                 inner join room r on r.floor_id = f.id and r.is_deleted = 0
+                 inner join bed b on b.room_id = r.id and b.bed_status = #{status}
+        order by f.code, r.sort, b.sort
+    </select>
+
     <insert id="insertFloor" parameterType="Floor" useGeneratedKeys="true" keyProperty="id">
         insert into floor
         <trim prefix="(" suffix=")" suffixOverrides=",">

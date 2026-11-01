@@ -120,6 +120,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         order by r.sort, r.create_time desc
     </select>
 
+    <!-- 房间明细（楼层、房间、价格）结果映射 -->
+    <resultMap id="roomOneResultMap" type="com.xhzb.nursing.domain.vo.RoomVo">
+        <id column="rid" property="id"/>
+        <result column="code" property="code"/>
+        <result column="floor_id" property="floorId"/>
+        <result column="fname" property="floorName"/>
+        <result column="rid" property="roomId"/>
+        <result column="price" property="price"/>
+    </resultMap>
+
+    <select id="selectRoomVoById" parameterType="Long" resultMap="roomOneResultMap">
+        select r.id as rid,
+               r.code,
+               r.floor_id,
+               f.name as fname,
+               rt.price
+        from room r
+                 left join floor f on f.id = r.floor_id
+                 left join room_type rt on rt.name = r.type_name
+        where r.id = #{id}
+    </select>
+
     <insert id="insertRoom" parameterType="Room" useGeneratedKeys="true" keyProperty="id">
         insert into room
         <trim prefix="(" suffix=")" suffixOverrides=",">

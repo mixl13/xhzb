@@ -1,8 +1,13 @@
 package com.xhzb.nursing.service;
 
 import java.util.List;
+
+import com.xhzb.nursing.domain.dto.ElderlyAssessmentDto;
 import com.xhzb.nursing.domain.entity.HealthAssessment;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xhzb.nursing.domain.entity.HealthAssessmentDataCollection;
+import com.xhzb.nursing.domain.entity.HealthAssessmentReport;
+import com.xhzb.nursing.domain.vo.ElderCheckInInfoVO;
 
 /**
  * 健康评估记录Service接口
@@ -18,7 +23,7 @@ public interface IHealthAssessmentService extends IService<HealthAssessment>
      * @param id 健康评估记录主键
      * @return 健康评估记录
      */
-    public HealthAssessment selectHealthAssessmentById(Long id);
+    public HealthAssessmentDataCollection selectHealthAssessmentById(Long id);
 
     /**
      * 查询健康评估记录列表
@@ -31,14 +36,14 @@ public interface IHealthAssessmentService extends IService<HealthAssessment>
     /**
      * 新增健康评估记录
      * 
-     * @param healthAssessment 健康评估记录
+     * @param dto 健康评估记录
      * @return 结果
      */
-    public int insertHealthAssessment(HealthAssessment healthAssessment);
+    public Long insertOrUpdateHealthAssessment(ElderlyAssessmentDto dto);
 
     /**
      * 修改健康评估记录
-     * 
+     *
      * @param healthAssessment 健康评估记录
      * @return 结果
      */
@@ -59,4 +64,12 @@ public interface IHealthAssessmentService extends IService<HealthAssessment>
      * @return 结果
      */
     public int deleteHealthAssessmentById(Long id);
+
+    Long assessmentData(ElderlyAssessmentDto dto);
+
+    HealthAssessmentReport getAssessmentDetail(Long id);
+
+    void cancel(Long id);
+
+    ElderCheckInInfoVO getElderInfo(Long id);
 }

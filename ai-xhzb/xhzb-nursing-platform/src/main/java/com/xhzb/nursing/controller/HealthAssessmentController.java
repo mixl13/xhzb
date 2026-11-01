@@ -1,6 +1,9 @@
 package com.xhzb.nursing.controller;
 
 import java.util.List;
+
+import com.xhzb.nursing.domain.dto.ElderlyAssessmentDto;
+import com.xhzb.nursing.domain.dto.HealthAssessmentDto;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,9 +87,9 @@ public class HealthAssessmentController extends BaseController
     @Log(title = "健康评估记录", businessType = BusinessType.INSERT)
     @PostMapping
     @Operation(summary = "新增健康评估记录")
-    public AjaxResult add(@RequestBody HealthAssessment healthAssessment)
+    public AjaxResult add(@RequestBody ElderlyAssessmentDto dto)
     {
-        return toAjax(healthAssessmentService.insertHealthAssessment(healthAssessment));
+        return AjaxResult.success(healthAssessmentService.insertOrUpdateHealthAssessment(dto));
     }
 
     /**
@@ -96,9 +99,9 @@ public class HealthAssessmentController extends BaseController
     @Log(title = "健康评估记录", businessType = BusinessType.UPDATE)
     @PutMapping
     @Operation(summary = "修改健康评估记录")
-    public AjaxResult edit(@RequestBody HealthAssessment healthAssessment)
+    public AjaxResult edit(@RequestBody ElderlyAssessmentDto dto)
     {
-        return toAjax(healthAssessmentService.updateHealthAssessment(healthAssessment));
+        return success(healthAssessmentService.insertOrUpdateHealthAssessment(dto));
     }
 
     /**
@@ -111,5 +114,37 @@ public class HealthAssessmentController extends BaseController
     public AjaxResult remove(@Schema(name = "健康评估记录ID", requiredMode = Schema.RequiredMode.REQUIRED) @PathVariable Long[] ids)
     {
         return toAjax(healthAssessmentService.deleteHealthAssessmentByIds(ids));
+    }
+
+    /**
+     * AI评估
+     * @return
+     */
+    @PostMapping("/assessmentData")
+    public AjaxResult assessmentData(@RequestBody ElderlyAssessmentDto dto){
+        return success(healthAssessmentService.assessmentData(dto));
+    }
+
+    /**
+     * 查看评估详情(评估结果)
+     * @return
+     */
+    @GetMapping("/report/{id}")
+    public AjaxResult getAssessmentDetail(@PathVariable Long id) {
+        return success(healthAssessmentService.getAssessmentDetail(id));
+    }
+
+    @PutMapping("/{id}")
+    public AjaxResult cancelAssessment(@PathVariable Long id)
+    {
+        healthAssessmentService.cancel(id);
+        return success();
+    }
+
+    @GetMapping("/elder/{id}")
+    @Operation(summary = "查看老人信息详情(入住字段填充)", description = "根据评估id，从评估信息采集表中获取老人基本信息")
+    public AjaxResult getElderInfo(@Schema(name = "评估ID", requiredMode = Schema.RequiredMode.REQUIRED) @PathVariable Long id)
+    {
+        return AjaxResult.success(healthAssessmentService.getElderInfo(id));
     }
 }
