@@ -3,6 +3,7 @@ package com.xhzb.nursing.domain.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 第一阶段 AI 评估结果（多维度能力等级评估）
@@ -24,4 +25,11 @@ public class ElderLevelResultVO {
     /** 等级变更依据（命中评估原则 2 中的若干条） */
     @Schema(title = "等级变更依据")
     private String reason;
+
+    @Schema(title = "评估总结")
+    private String result;
+
+    @Schema(title = "心理关怀建议")
+    private String psychologicalCare;
+
 }

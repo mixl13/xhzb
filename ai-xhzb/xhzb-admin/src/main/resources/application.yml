@@ -34,6 +34,13 @@ token:
   secret: abcdefghijklmnopqrstuvwxyz
   # 令牌有效期（默认30分钟）
   expireTime: 300000
+# 微信小程序配置
+wx:
+  # 小程序appid
+  appid: wx8b95197250e53ae3
+  # 小程序appSecret（用于code2Session、获取接口调用凭据）
+  secret: 20f233c427e4ba0cfb87798af01997ff
+
 # MyBatisPlus配置
 mybatis-plus:
   # 搜索指定包别名

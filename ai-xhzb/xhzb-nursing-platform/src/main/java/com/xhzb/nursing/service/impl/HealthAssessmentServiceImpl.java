@@ -250,6 +250,7 @@ public class HealthAssessmentServiceImpl extends ServiceImpl<HealthAssessmentMap
         report.setLevelChangeReason(elderLevelResultVO.getReason());
         report.setCreateTime(DateUtils.getNowDate());
         report.setCreateBy(SecurityUtils.getUsername());
+        report.setPsychologicalCare(elderLevelResultVO.getPsychologicalCare());
         reportService.save(report);
 
         //        4.第二阶段 AI 分析（体检报告评估）：
@@ -270,7 +271,7 @@ public class HealthAssessmentServiceImpl extends ServiceImpl<HealthAssessmentMap
         String pdfContent = PDFUtil.pdfToString(inputStream);
 
         //4.3 组装老人健康评估Prompt：将提取的体检报告内容和评估规则，组装成新的 AI 分析 Prompt。
-        String userPrompt2 = String.format(SystemConstants.USER_PROMPT2,pdfContent);
+        String userPrompt2 = String.format(SystemConstants.USER_PROMPT2,pdfContent,elderLevelResultVO.getPsychologicalCare());
 
         //4.2 AI分析体检报告：调用 AI 对体检报告内容进行专业分析。
         HealthReportResultVO healthReportResultVO = this.chatBigModel(userPrompt2, HealthReportResultVO.class);
@@ -287,6 +288,8 @@ public class HealthAssessmentServiceImpl extends ServiceImpl<HealthAssessmentMap
         report.setRecommendedCareLevel(careLevel);
         report.setAssessmentTime(LocalDateTime.now());
         report.setUpdateBy(SecurityUtils.getUsername());
+        report.setSuggestionDescription(healthReportResultVO.getSuggestionDescription());
+        report.setDietSuggestion(healthReportResultVO.getDietSuggestion());
 
         // 5.结果存储与状态更新：
         // 5.1 更新AI评估报告信息

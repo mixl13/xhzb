@@ -34,6 +34,11 @@ public class HealthReportResultVO {
     @Schema(title = "报告总结")
     private String summarize;
 
+    @Schema(title = "核心建议说明")
+    private String suggestionDescription;
+    @Schema(title = "饮食建议说明")
+    private String dietSuggestion;
+
     /** 嵌套：八大系统分值 */
     @Data
     @Schema(description = "八大系统分值")
