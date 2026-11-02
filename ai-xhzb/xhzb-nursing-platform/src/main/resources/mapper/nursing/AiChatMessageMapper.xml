@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhzb.nursing.mapper.AiChatMessageMapper">
+
+    <resultMap type="AiChatMessage" id="AiChatMessageResult">
+        <result property="id"             column="id"              />
+        <result property="conversationId" column="conversation_id"  />
+        <result property="seq"            column="seq"              />
+        <result property="messageType"    column="message_type"     />
+        <result property="content"        column="content"          />
+        <result property="metadata"       column="metadata"         />
+        <result property="createBy"       column="create_by"        />
+        <result property="createTime"     column="create_time"      />
+        <result property="updateBy"       column="update_by"        />
+        <result property="updateTime"     column="update_time"      />
+        <result property="remark"         column="remark"           />
+    </resultMap>
+
+    <sql id="selectAiChatMessageVo">
+        select id, conversation_id, seq, message_type, content, metadata,
+               create_by, create_time, update_by, update_time, remark
+        from ai_chat_message
+    </sql>
+
+    <!-- 按会话查询全部消息：必须按 seq 正序，否则 Advisor 取到的上下文顺序是反的 -->
+    <select id="selectByConversationId" parameterType="String" resultMap="AiChatMessageResult">
+        <include refid="selectAiChatMessageVo"/>
+        where conversation_id = #{conversationId}
+        order by seq asc
+    </select>
+
+    <select id="selectMaxSeq" parameterType="String" resultType="Integer">
+        select ifnull(max(seq), 0) from ai_chat_message where conversation_id = #{conversationId}
+    </select>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into ai_chat_message
+        (conversation_id, seq, message_type, content, metadata, create_by, create_time, update_by, update_time)
+        values
+        <foreach collection="messageList" item="item" separator=",">
+            (#{item.conversationId}, #{item.seq}, #{item.messageType}, #{item.content}, #{item.metadata},
+             ifnull(#{item.createBy}, ''), sysdate(), ifnull(#{item.updateBy}, ''), sysdate())
+        </foreach>
+    </insert>
+
+    <delete id="deleteByConversationId" parameterType="String">
+        delete from ai_chat_message where conversation_id = #{conversationId}
+    </delete>
+
+</mapper>

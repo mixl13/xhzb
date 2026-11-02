@@ -1,0 +1,101 @@
+package com.xhzb.nursing.domain.dto;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
+import java.io.Serializable;
+
+/**
+ * 入住老人信息DTO
+ *
+ * @author mixl
+ */
+@Data
+@Schema(description = "入住老人信息DTO")
+public class CheckInElderDto implements Serializable
+{
+    private static final long serialVersionUID = 1L;
+
+    /** 老人姓名 */
+    @NotBlank(message = "老人姓名不能为空")
+    @Schema(title = "老人姓名")
+    private String name;
+
+    /** 身份证号 */
+    @NotBlank(message = "身份证号不能为空")
+    @Schema(title = "身份证号")
+    private String idCardNo;
+
+    /** 手机号 */
+    @NotBlank(message = "联系电话不能为空")
+    @Schema(title = "联系电话")
+    private String phone;
+
+    /** 性别（0:女  1:男） */
+    @NotNull(message = "性别不能为空")
+    @Schema(title = "性别（0:女  1:男）")
+    private Integer sex;
+
+    /** 出生日期 */
+    @Schema(title = "出生日期")
+    private String birthday;
+
+    /** 年龄（elder 表无该字段，仅作为入参接收，不落库） */
+    @Schema(title = "年龄")
+    private String age;
+
+    /** 家庭住址 */
+    @Schema(title = "家庭住址")
+    private String address;
+
+    /** 头像 */
+    @Schema(title = "头像")
+    private String image;
+
+    /** 身份证国徽面 */
+    @Schema(title = "身份证国徽面")
+    private String idCardNationalEmblemImg;
+
+    /** 身份证人像面 */
+    @Schema(title = "身份证人像面")
+    private String idCardPortraitImg;
+
+    /** 民族 */
+    @Schema(title = "民族")
+    private String nation;
+
+    /** 文化程度 */
+    @Schema(title = "文化程度")
+    private String educationLevel;
+
+    /** 社保卡号 */
+    @Schema(title = "社保卡号")
+    private String socialSecurityCard;
+
+    /** 居住情况 */
+    @Schema(title = "居住情况")
+    private String livingSituation;
+
+    /** 宗教信仰 */
+    @Schema(title = "宗教信仰")
+    private String religiousBelief;
+
+    /** 经济来源 */
+    @Schema(title = "经济来源")
+    private String economicSource;
+
+    /** 婚姻状况 */
+    @Schema(title = "婚姻状况")
+    private String maritalStatus;
+
+    /** 医疗费用支付方式 */
+    @Schema(title = "医疗费用支付方式")
+    private String medicalPaymentMethod;
+
+    /** 核心建议，0-不建议入住，1-建议入住 */
+    @Schema(title = "核心建议")
+    private String coreSuggestion;
+
+}
